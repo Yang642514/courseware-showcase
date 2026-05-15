@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../content/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} - 晴天展示工作台`}>
+  <main class="page-shell">
+    <section class="section">
+      <p class="eyebrow">{project.type}</p>
+      <h1 class="page-title">{project.title}</h1>
+      <p class="lead">{project.description}</p>
+      <div class="button-row">
+        <a class="button-primary" href={project.path}>打开项目</a>
+        <a class="button-secondary" href="/">返回首页</a>
+      </div>
+    </section>
+  </main>
+</Layout>
