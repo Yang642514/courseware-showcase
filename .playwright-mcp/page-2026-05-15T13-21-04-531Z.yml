@@ -1,0 +1,32 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "晴天展示工作台" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=e4]:
+      - link "首页" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - link "企业 AI 培训" [ref=e6] [cursor=pointer]:
+        - /url: /c/enterprise-ai-training/
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - paragraph [ref=e9]: Lesson 1
+      - heading "找到岗位里的最小 AI 场景" [level=1] [ref=e10]
+      - paragraph [ref=e11]: 从每周重复任务里筛出一个本周能跑通的 AI 场景。
+    - region "课件预览" [ref=e12]:
+      - generic [ref=e13]:
+        - iframe [ref=e14]:
+          
+        - generic [ref=e15]:
+          - button "← 上一页" [disabled] [ref=e16]
+          - generic [ref=e17]: 第 1 页
+          - button "下一页 →" [disabled] [ref=e18]
+          - link "全屏打开" [ref=e19] [cursor=pointer]:
+            - /url: /decks/enterprise-ai-training-lesson-1/index.html
+    - generic [ref=e21]:
+      - link "查看课后作业" [ref=e22] [cursor=pointer]:
+        - /url: /c/enterprise-ai-training/lesson-1/homework/
+      - link "返回课程主页" [ref=e23] [cursor=pointer]:
+        - /url: /c/enterprise-ai-training/
+  - contentinfo [ref=e24]:
+    - paragraph [ref=e25]: 晴天 · 课程课件与临时网页展示工作台
+    - paragraph [ref=e26]: 公开内容展示在首页；半私密项目通过直达链接访问。

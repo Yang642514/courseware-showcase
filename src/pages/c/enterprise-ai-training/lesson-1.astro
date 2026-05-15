@@ -47,51 +47,36 @@ if (!course || !lesson || !lesson.deckPath) {
   </main>
 
   <script is:inline>
-    let currentSlide = 0;
     const frame = document.getElementById('ppt-frame');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
     const indicator = document.getElementById('slide-indicator');
+    let ready = false;
 
-    // Listen for messages from PPT iframe
-    window.addEventListener('message', (e) => {
-      if (e.data && e.data.type === 'slideChange') {
-        currentSlide = e.data.index || 0;
-        updateNav();
-      }
-    });
-
-    function navigatePPT(direction) {
-      if (frame && frame.contentWindow) {
-        frame.contentWindow.postMessage({
-          type: 'navigate',
-          direction: direction
-        }, '*');
-      }
-    }
-
-    function updateNav() {
-      if (indicator) {
-        indicator.textContent = `第 ${currentSlide + 1} 页`;
-      }
-      if (btnPrev) {
-        btnPrev.disabled = currentSlide === 0;
-      }
-    }
-
-    // Poll iframe for slide state (fallback)
-    setInterval(() => {
+    function syncState() {
       try {
-        if (frame && frame.contentWindow && frame.contentWindow.__currentSlideIndex !== undefined) {
-          currentSlide = frame.contentWindow.__currentSlideIndex;
-          updateNav();
-        }
-      } catch (e) {
-        // Cross-origin, ignore
-      }
-    }, 1000);
+        const win = frame.contentWindow;
+        if (!win || typeof win.go !== 'function') return;
+        ready = true;
+        const idx = win.__currentSlideIndex || 0;
+        const total = win.total || win.document.querySelectorAll('.slide').length || 0;
+        indicator.textContent = total ? `第 ${idx + 1} / ${total} 页` : `第 ${idx + 1} 页`;
+        btnPrev.disabled = idx <= 0;
+        btnNext.disabled = idx >= total - 1;
+      } catch (e) {}
+    }
 
-    // Initial update
-    updateNav();
+    function navigatePPT(dir) {
+      try {
+        const win = frame.contentWindow;
+        if (win && typeof win.go === 'function') {
+          win.go((win.__currentSlideIndex || 0) + dir);
+        }
+      } catch (e) {}
+      setTimeout(syncState, 100);
+    }
+
+    frame.addEventListener('load', () => { setTimeout(syncState, 300); });
+    setInterval(syncState, 800);
   </script>
 </Layout>
