@@ -23,7 +23,7 @@ Read these before implementing:
 Source deck to copy:
 
 ```text
-D:\笔记库\企业服务\05-企业AI培训\02-培训材料\第1课-找到岗位里的最小AI场景-ppt
+D:\笔记库\企业服务\05-企业AI培训\02-培训材料\04-PPT成品\01-第1课-找到岗位里的最小AI场景-ppt
 ```
 
 Destination deck folder:
@@ -854,7 +854,7 @@ Expected: commit succeeds.
 ### Task 5: Copy HTML PPT Deck Into Static Assets
 
 **Files:**
-- Copy from: `D:\笔记库\企业服务\05-企业AI培训\02-培训材料\第1课-找到岗位里的最小AI场景-ppt`
+- Copy from: `D:\笔记库\企业服务\05-企业AI培训\02-培训材料\04-PPT成品\01-第1课-找到岗位里的最小AI场景-ppt`
 - Copy to: `D:\笔记库\展示工作台\public\decks\enterprise-ai-training-lesson-1`
 
 - [ ] **Step 1: Copy deck directory**
@@ -862,7 +862,7 @@ Expected: commit succeeds.
 Run:
 
 ```powershell
-$src = 'D:\笔记库\企业服务\05-企业AI培训\02-培训材料\第1课-找到岗位里的最小AI场景-ppt'
+$src = 'D:\笔记库\企业服务\05-企业AI培训\02-培训材料\04-PPT成品\01-第1课-找到岗位里的最小AI场景-ppt'
 $dst = 'D:\笔记库\展示工作台\public\decks\enterprise-ai-training-lesson-1'
 New-Item -ItemType Directory -Force -Path $dst
 Copy-Item -LiteralPath (Join-Path $src 'index.html') -Destination (Join-Path $dst 'index.html') -Force
@@ -1259,4 +1259,3 @@ Expected: no uncommitted changes except local generated files intentionally igno
   - No kubeconfig committed.
   - No secrets in source files.
   - Semi-private content is controlled only by not linking it from public pages.
-

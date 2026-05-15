@@ -4,7 +4,7 @@ import Layout from '../../../../layouts/Layout.astro';
 
 <Layout title="第 1 课作业 - 企业 AI 培训">
   <main class="page-shell">
-    <section class="section">
+    <section class="section" style="padding-top: 0;">
       <p class="eyebrow">Homework</p>
       <h1 class="page-title">提交 3 个岗位 AI 场景</h1>
       <p class="lead">从你每周重复 3 次以上的任务里找。先不要追求完整自动化，只要能在本周跑通一小段。</p>
@@ -15,20 +15,20 @@ import Layout from '../../../../layouts/Layout.astro';
         <article class="report-cell">
           <span class="tag active">填写格式</span>
           <h2 style="font-size: 22px; margin: 12px 0;">场景卡模板</h2>
-          <ul style="color: var(--muted); font-family: inherit; font-size: 14px; line-height: 2; margin: 0; padding-left: 20px;">
-            <li>岗位：销售 / 行政 / 运营 / 财务 / 客服等</li>
-            <li>任务：一个具体动作</li>
-            <li>输入：AI 需要看到的材料</li>
-            <li>输出：AI 应该生成什么</li>
-            <li>检查：人如何判断好坏</li>
-            <li>暂不处理：复杂或高风险情况</li>
+          <ul style="color: var(--muted); font-size: 15px; line-height: 2; margin: 0; padding-left: 20px;">
+            <li><strong>岗位：</strong>销售 / 行政 / 运营 / 财务 / 客服等</li>
+            <li><strong>任务：</strong>一个具体动作</li>
+            <li><strong>输入：</strong>AI 需要看到的材料</li>
+            <li><strong>输出：</strong>AI 应该生成什么</li>
+            <li><strong>检查：</strong>人如何判断好坏</li>
+            <li><strong>暂不处理：</strong>复杂或高风险情况</li>
           </ul>
         </article>
 
         <article class="report-cell">
           <span class="tag">示例</span>
           <h2 style="font-size: 22px; margin: 12px 0;">参考示例</h2>
-          <ul style="color: var(--muted); font-family: inherit; font-size: 14px; line-height: 2; margin: 0; padding-left: 20px;">
+          <ul style="color: var(--muted); font-size: 15px; line-height: 2; margin: 0; padding-left: 20px;">
             <li><strong>岗位：</strong>客户跟进</li>
             <li><strong>任务：</strong>根据客户沟通记录生成下次微信跟进话术</li>
             <li><strong>输入：</strong>客户类型、上次沟通、当前顾虑</li>
@@ -44,14 +44,28 @@ import Layout from '../../../../layouts/Layout.astro';
       <article class="report-cell">
         <span class="tag active">可复制</span>
         <h2 style="font-size: 22px; margin: 12px 0;">场景卡模板</h2>
-        <pre style="white-space: pre-wrap; line-height: 2; color: var(--muted); background: var(--surface-translucent); padding: 24px; border: 1px solid var(--line);">岗位：
+        <pre style="white-space: pre-wrap; line-height: 2; color: var(--muted); background: var(--surface-muted); padding: 24px; border: 1px solid var(--line); font-size: 14px; overflow-x: auto;">岗位：
 任务：
 输入：
 输出：
 检查：
 暂不处理：</pre>
-        <button class="button-primary" onclick="navigator.clipboard.writeText(document.querySelector('pre').textContent)" style="margin-top: 16px;">复制模板</button>
+        <button class="button-primary" onclick="copyTemplate()" style="margin-top: 16px;">复制模板</button>
       </article>
     </section>
   </main>
+
+  <script is:inline>
+    function copyTemplate() {
+      const text = `岗位：
+任务：
+输入：
+输出：
+检查：
+暂不处理：`;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('已复制到剪贴板');
+      });
+    }
+  </script>
 </Layout>

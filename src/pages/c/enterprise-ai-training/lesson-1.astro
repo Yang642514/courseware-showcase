@@ -12,28 +12,86 @@ if (!course || !lesson || !lesson.deckPath) {
 
 <Layout title={`${lesson.title} - ${course.title}`}>
   <main class="page-shell">
-    <section class="section">
+    <section class="section" style="padding-top: 0;">
       <p class="eyebrow">Lesson 1</p>
       <h1 class="page-title">{lesson.title}</h1>
       <p class="lead">{lesson.summary}</p>
-      <div class="button-row">
-        <a class="button-primary" href={lesson.deckPath} target="_blank" rel="noopener">全屏打开课件</a>
+    </section>
+
+    <section class="section" aria-label="课件预览">
+      <div class="ppt-viewer">
+        <iframe
+          id="ppt-frame"
+          src={lesson.deckPath}
+          title={lesson.title}
+          class="ppt-container"
+          loading="lazy"
+        ></iframe>
+        <div class="ppt-nav">
+          <button id="btn-prev" class="secondary" onclick="navigatePPT(-1)">← 上一页</button>
+          <span id="slide-indicator">加载中...</span>
+          <button id="btn-next" onclick="navigatePPT(1)">下一页 →</button>
+          <a class="button secondary" href={lesson.deckPath} target="_blank" rel="noopener" style="margin-left: auto;">全屏打开</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="button-row" style="margin-top: 0;">
         {lesson.homeworkPath && (
-          <a class="button-secondary" href={lesson.homeworkPath}>查看课后作业</a>
+          <a class="button-primary" href={lesson.homeworkPath}>查看课后作业</a>
         )}
         <a class="button-secondary" href={`/c/${course.slug}/`}>返回课程主页</a>
       </div>
     </section>
-
-    <section class="section" aria-label="课件预览">
-      <div style="width:100%; aspect-ratio:16 / 9; border:1px solid var(--line); background:#fff;">
-        <iframe
-          src={lesson.deckPath}
-          title={lesson.title}
-          style="width:100%; height:100%; border:none;"
-          loading="lazy"
-        ></iframe>
-      </div>
-    </section>
   </main>
+
+  <script is:inline>
+    let currentSlide = 0;
+    const frame = document.getElementById('ppt-frame');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const indicator = document.getElementById('slide-indicator');
+
+    // Listen for messages from PPT iframe
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'slideChange') {
+        currentSlide = e.data.index || 0;
+        updateNav();
+      }
+    });
+
+    function navigatePPT(direction) {
+      if (frame && frame.contentWindow) {
+        frame.contentWindow.postMessage({
+          type: 'navigate',
+          direction: direction
+        }, '*');
+      }
+    }
+
+    function updateNav() {
+      if (indicator) {
+        indicator.textContent = `第 ${currentSlide + 1} 页`;
+      }
+      if (btnPrev) {
+        btnPrev.disabled = currentSlide === 0;
+      }
+    }
+
+    // Poll iframe for slide state (fallback)
+    setInterval(() => {
+      try {
+        if (frame && frame.contentWindow && frame.contentWindow.__currentSlideIndex !== undefined) {
+          currentSlide = frame.contentWindow.__currentSlideIndex;
+          updateNav();
+        }
+      } catch (e) {
+        // Cross-origin, ignore
+      }
+    }, 1000);
+
+    // Initial update
+    updateNav();
+  </script>
 </Layout>
