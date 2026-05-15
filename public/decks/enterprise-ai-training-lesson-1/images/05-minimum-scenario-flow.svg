@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="900" viewBox="0 0 2100 900">
+  <rect width="2100" height="900" fill="#fafaf8"/>
+  <g font-family="Inter, Noto Sans SC, Microsoft YaHei, Arial, sans-serif">
+    <text x="70" y="94" font-size="30" font-weight="600" fill="#737373" letter-spacing="4">FORMULA</text>
+    <rect x="70" y="125" width="1960" height="2" fill="#0a0a0a"/>
+    <g transform="translate(70 185)">
+      <rect x="0" y="0" width="465" height="430" fill="#f0f0ee"/>
+      <text x="38" y="58" font-size="31" font-weight="700" fill="#002FA7">01</text>
+      <text x="38" y="132" font-size="50" font-weight="300" fill="#0a0a0a">具体任务</text>
+      <text x="38" y="212" font-size="28" font-weight="300" fill="#525252">不是岗位职责，而是一个动作</text>
+      <rect x="38" y="320" width="370" height="58" fill="#ffffff"/>
+      <text x="62" y="358" font-size="25" font-weight="500" fill="#0a0a0a">客户记录 → 跟进话术</text>
+      <rect x="500" y="0" width="465" height="430" fill="#f0f0ee"/>
+      <text x="538" y="58" font-size="31" font-weight="700" fill="#002FA7">02</text>
+      <text x="538" y="132" font-size="50" font-weight="300" fill="#0a0a0a">明确输入</text>
+      <text x="538" y="212" font-size="28" font-weight="300" fill="#525252">AI 需要看到材料、限制、背景</text>
+      <rect x="538" y="320" width="370" height="58" fill="#ffffff"/>
+      <text x="562" y="358" font-size="25" font-weight="500" fill="#0a0a0a">客户类型 / 顾虑</text>
+      <rect x="1000" y="0" width="465" height="430" fill="#f0f0ee"/>
+      <text x="1038" y="58" font-size="31" font-weight="700" fill="#002FA7">03</text>
+      <text x="1038" y="132" font-size="50" font-weight="300" fill="#0a0a0a">可检查输出</text>
+      <text x="1038" y="212" font-size="28" font-weight="300" fill="#525252">结果长什么样，谁判断好坏</text>
+      <rect x="1038" y="320" width="370" height="58" fill="#ffffff"/>
+      <text x="1062" y="358" font-size="25" font-weight="500" fill="#0a0a0a">微信话术 + 提醒</text>
+      <rect x="1500" y="0" width="460" height="430" fill="#002FA7"/>
+      <text x="1538" y="58" font-size="31" font-weight="700" fill="#ffffff">04</text>
+      <text x="1538" y="132" font-size="50" font-weight="300" fill="#ffffff">本周跑通</text>
+      <text x="1538" y="212" font-size="28" font-weight="300" fill="#ffffff">先跑一次，不改整个岗位</text>
+      <rect x="1538" y="320" width="350" height="58" fill="#001f73"/>
+      <text x="1562" y="358" font-size="25" font-weight="700" fill="#ffffff">今天能开始</text>
+    </g>
+    <rect x="70" y="670" width="1960" height="85" fill="#0a0a0a"/>
+    <text x="125" y="724" font-size="32" font-weight="300" fill="#ffffff">好场景 = 具体任务 + 明确输入 + 可检查输出 + 本周能跑通</text>
+    <text x="70" y="822" font-size="26" font-weight="300" fill="#525252">讲师话术：不是一句“我要提升效率”，而是一张可以交给 AI 执行的任务卡。</text>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="900" viewBox="0 0 2100 900">
+  <rect width="2100" height="900" fill="#fafaf8"/>
+  <g font-family="Inter, Noto Sans SC, Microsoft YaHei, Arial, sans-serif">
+    <rect x="70" y="65" width="1960" height="2" fill="#0a0a0a"/>
+    <text x="70" y="118" font-size="28" font-weight="600" fill="#737373" letter-spacing="4">FILTER</text>
+    <g transform="translate(110 170)">
+      <rect x="0" y="0" width="760" height="520" fill="#f0f0ee"/>
+      <text x="45" y="68" font-size="37" font-weight="700" fill="#0a0a0a">先从高频任务里找</text>
+      <text x="45" y="135" font-size="30" font-weight="300" fill="#525252">每周重复 3 次以上 / 有人要结果 / 材料相对固定</text>
+      <line x1="45" y1="205" x2="715" y2="205" stroke="#d4d4d2" stroke-width="2"/>
+      <text x="45" y="270" font-size="29" font-weight="500" fill="#002FA7">可选任务池</text>
+      <text x="45" y="326" font-size="29" font-weight="300" fill="#0a0a0a">周会纪要 / 客户跟进 / 活动文案</text>
+      <text x="45" y="382" font-size="29" font-weight="300" fill="#0a0a0a">表格异常 / 工单回复 / 招聘邀约</text>
+      <text x="45" y="438" font-size="29" font-weight="300" fill="#0a0a0a">合同摘要 / 竞品整理 / 报销复核</text>
+      <g transform="translate(860 0)">
+        <rect x="0" y="0" width="930" height="72" fill="#f0f0ee"/>
+        <text x="40" y="47" font-size="29" font-weight="300" fill="#0a0a0a">01  是否高频？</text>
+        <rect x="95" y="92" width="835" height="72" fill="#f0f0ee"/>
+        <text x="135" y="139" font-size="29" font-weight="300" fill="#0a0a0a">02  输入材料是什么？</text>
+        <rect x="190" y="184" width="740" height="72" fill="#f0f0ee"/>
+        <text x="230" y="231" font-size="29" font-weight="300" fill="#0a0a0a">03  输出结果是什么？</text>
+        <rect x="285" y="276" width="645" height="72" fill="#f0f0ee"/>
+        <text x="325" y="323" font-size="29" font-weight="300" fill="#0a0a0a">04  谁来检查好坏？</text>
+        <rect x="380" y="368" width="550" height="112" fill="#002FA7"/>
+        <text x="420" y="414" font-size="26" font-weight="700" fill="#ffffff">05</text>
+        <text x="420" y="460" font-size="34" font-weight="300" fill="#ffffff">本周能否跑一次？</text>
+      </g>
+    </g>
+    <rect x="110" y="750" width="1880" height="70" fill="#0a0a0a"/>
+    <text x="165" y="795" font-size="30" font-weight="300" fill="#ffffff">过不了第 5 问，就继续缩小任务；过了，才值得进入提示词设计。</text>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#fafaf8"/>
+  <g font-family="Inter, Noto Sans SC, Microsoft YaHei, Arial, sans-serif">
+    <rect x="80" y="70" width="1440" height="720" fill="#f0f0ee"/>
+    <rect x="80" y="70" width="1440" height="70" fill="#0a0a0a"/>
+    <text x="122" y="116" font-size="24" font-weight="600" fill="#ffffff">AI Chat · 泛输入案例</text>
+
+    <rect x="150" y="195" width="1040" height="86" fill="#ffffff"/>
+    <text x="190" y="249" font-size="30" font-weight="300" fill="#0a0a0a">我想用 AI 提升销售效率，你帮我看看可以怎么做。</text>
+
+    <rect x="310" y="335" width="1040" height="320" fill="#ffffff"/>
+    <text x="350" y="392" font-size="29" font-weight="500" fill="#0a0a0a">你可以从以下方向入手：</text>
+    <text x="350" y="452" font-size="27" font-weight="300" fill="#525252">1. 做好客户画像分析，提升客户理解</text>
+    <text x="350" y="505" font-size="27" font-weight="300" fill="#525252">2. 优化销售话术，提高沟通效率</text>
+    <text x="350" y="558" font-size="27" font-weight="300" fill="#525252">3. 建立客户分层管理，制定跟进策略</text>
+    <text x="350" y="611" font-size="27" font-weight="300" fill="#525252">4. 用数据分析复盘销售转化</text>
+
+    <rect x="150" y="705" width="1200" height="54" fill="#002FA7"/>
+    <text x="190" y="741" font-size="25" font-weight="600" fill="#ffffff">问题：方向都对，但没有输入、输出和检查标准，学员仍然不知道第一步做什么。</text>
+
+    <rect x="1245" y="195" width="165" height="86" fill="#0a0a0a"/>
+    <text x="1280" y="249" font-size="23" font-weight="600" fill="#ffffff">泛问题</text>
+    <rect x="1368" y="335" width="70" height="320" fill="#d4d4d2"/>
+    <text transform="translate(1412 610) rotate(-90)" font-size="22" font-weight="600" fill="#737373">DIRECTION LIST</text>
+  </g>
+</svg>

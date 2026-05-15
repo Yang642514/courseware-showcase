@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="900" viewBox="0 0 2100 900">
+  <rect width="2100" height="900" fill="#fafaf8"/>
+  <g font-family="Inter, Noto Sans SC, Microsoft YaHei, Arial, sans-serif">
+    <rect x="70" y="70" width="1960" height="2" fill="#0a0a0a"/>
+    <text x="70" y="122" font-size="28" font-weight="600" fill="#737373" letter-spacing="4">ROLE MAP</text>
+    <g transform="translate(70 170)">
+      <rect x="0" y="0" width="620" height="510" fill="#f0f0ee"/>
+      <text x="38" y="60" font-size="34" font-weight="700" fill="#002FA7">行政 / 职能</text>
+      <text x="38" y="126" font-size="38" font-weight="300" fill="#0a0a0a">会议录音 → 会议纪要初稿</text>
+      <line x1="38" y1="190" x2="582" y2="190" stroke="#d4d4d2" stroke-width="2"/>
+      <text x="38" y="252" font-size="27" font-weight="300" fill="#525252">输入：录音转写 / 议题 / 参会人</text>
+      <text x="38" y="306" font-size="27" font-weight="300" fill="#525252">输出：结论 / 待办 / 风险提醒</text>
+      <text x="38" y="360" font-size="27" font-weight="300" fill="#525252">检查：责任人和时间是否准确</text>
+      <rect x="38" y="425" width="480" height="52" fill="#ffffff"/>
+      <text x="64" y="459" font-size="25" font-weight="500" fill="#0a0a0a">本周可跑：一次周会纪要</text>
+      <rect x="670" y="0" width="620" height="510" fill="#f0f0ee"/>
+      <text x="708" y="60" font-size="34" font-weight="700" fill="#002FA7">运营</text>
+      <text x="708" y="126" font-size="38" font-weight="300" fill="#0a0a0a">活动信息 → 宣传文案初稿</text>
+      <line x1="708" y1="190" x2="1252" y2="190" stroke="#d4d4d2" stroke-width="2"/>
+      <text x="708" y="252" font-size="27" font-weight="300" fill="#525252">输入：时间 / 人群 / 卖点 / 限制</text>
+      <text x="708" y="306" font-size="27" font-weight="300" fill="#525252">输出：标题 / 正文 / 发布提醒</text>
+      <text x="708" y="360" font-size="27" font-weight="300" fill="#525252">检查：是否夸大、是否遗漏规则</text>
+      <rect x="708" y="425" width="480" height="52" fill="#ffffff"/>
+      <text x="734" y="459" font-size="25" font-weight="500" fill="#0a0a0a">本周可跑：一条活动推文</text>
+      <rect x="1340" y="0" width="620" height="510" fill="#002FA7"/>
+      <text x="1378" y="60" font-size="34" font-weight="700" fill="#ffffff">财务 / 数据</text>
+      <text x="1378" y="126" font-size="38" font-weight="300" fill="#ffffff">表格数据 → 异常点摘要</text>
+      <line x1="1378" y1="190" x2="1922" y2="190" stroke="#ffffff" stroke-width="2" opacity=".45"/>
+      <text x="1378" y="252" font-size="27" font-weight="300" fill="#ffffff">输入：数据表 / 口径 / 阈值</text>
+      <text x="1378" y="306" font-size="27" font-weight="300" fill="#ffffff">输出：异常项 / 可能原因 / 建议复核</text>
+      <text x="1378" y="360" font-size="27" font-weight="300" fill="#ffffff">检查：数字是否准确、口径是否一致</text>
+      <rect x="1378" y="425" width="480" height="52" fill="#001f73"/>
+      <text x="1404" y="459" font-size="25" font-weight="700" fill="#ffffff">本周可跑：一张费用表</text>
+    </g>
+    <rect x="70" y="740" width="1960" height="70" fill="#0a0a0a"/>
+    <text x="125" y="785" font-size="29" font-weight="300" fill="#ffffff">不是找“AI 能做什么”，而是从每周重复的工作里找一个入口。</text>
+  </g>
+</svg>
