@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+kubeconfig.yaml
+*.log
+.DS_Store
