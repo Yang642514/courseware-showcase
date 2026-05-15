@@ -1,0 +1,39 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCourse } from '../../../content/courses';
+
+const course = getCourse('enterprise-ai-training');
+const lesson = course?.lessons.find((item) => item.slug === 'lesson-1');
+
+if (!course || !lesson || !lesson.deckPath) {
+  throw new Error('lesson-1 deck config is missing');
+}
+---
+
+<Layout title={`${lesson.title} - ${course.title}`}>
+  <main class="page-shell">
+    <section class="section">
+      <p class="eyebrow">Lesson 1</p>
+      <h1 class="page-title">{lesson.title}</h1>
+      <p class="lead">{lesson.summary}</p>
+      <div class="button-row">
+        <a class="button-primary" href={lesson.deckPath} target="_blank" rel="noopener">全屏打开课件</a>
+        {lesson.homeworkPath && (
+          <a class="button-secondary" href={lesson.homeworkPath}>查看课后作业</a>
+        )}
+        <a class="button-secondary" href={`/c/${course.slug}/`}>返回课程主页</a>
+      </div>
+    </section>
+
+    <section class="section" aria-label="课件预览">
+      <div style="width:100%; aspect-ratio:16 / 9; border:1px solid var(--line); background:#fff;">
+        <iframe
+          src={lesson.deckPath}
+          title={lesson.title}
+          style="width:100%; height:100%; border:none;"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+</Layout>

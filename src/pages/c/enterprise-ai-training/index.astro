@@ -1,0 +1,47 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCourse } from '../../../content/courses';
+
+const course = getCourse('enterprise-ai-training');
+
+if (!course) {
+  throw new Error('enterprise-ai-training course config is missing');
+}
+---
+
+<Layout title={`${course.title} - 晴天展示工作台`}>
+  <main class="page-shell">
+    <section class="section">
+      <p class="eyebrow">Enterprise AI Training</p>
+      <h1 class="page-title">{course.title}</h1>
+      <p class="lead">{course.description}</p>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Lessons</p>
+      <div class="report-grid" style="margin-top: 22px;">
+        {course.lessons.map((lesson) => (
+          <article class="report-cell">
+            <div>
+              <span class:list={['tag', { active: lesson.status === 'ready' }]}>{lesson.status === 'ready' ? '✓ 已完成' : lesson.status === 'draft' ? '编辑中' : '待发布'}</span>
+              <h2 style="font-size: 22px; margin: 12px 0;">{lesson.title}</h2>
+              <p>{lesson.summary}</p>
+              <p style="margin-top: 12px;">时长：{lesson.durationMinutes} 分钟</p>
+            </div>
+            <div class="button-row">
+              {lesson.status === 'ready' && lesson.deckPath && (
+                <a class="button-primary" href={`/c/${course.slug}/${lesson.slug}/`}>查看课件</a>
+              )}
+              {lesson.status === 'ready' && lesson.homeworkPath && (
+                <a class="button-secondary" href={lesson.homeworkPath}>查看作业</a>
+              )}
+              {lesson.status !== 'ready' && (
+                <span style="color: var(--muted); opacity: 0.6;">待发布</span>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
