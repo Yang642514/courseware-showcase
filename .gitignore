@@ -6,3 +6,6 @@ dist/
 kubeconfig.yaml
 *.log
 .DS_Store
+.playwright-mcp/
+.superpowers/
+*.png
