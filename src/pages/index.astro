@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPublicCourses } from '../content/courses';
+import { getPublicProjects } from '../content/projects';
+
+const courses = getPublicCourses();
+const projects = getPublicProjects();
+---
+
+<Layout title="晴天展示工作台">
+  <main>
+    <section class="shell section" style="padding-top: 88px;">
+      <p class="eyebrow">Courseware & Demo Hub</p>
+      <h1 class="page-title">课件、作业和临时网页，统一放到这里。</h1>
+      <p style="max-width: 760px; color: var(--muted); line-height: 1.8; font-size: 18px; margin-top: 28px;">
+        这里用于发布企业培训课件、作业说明、HTML PPT 和临时演示网页。首页只展示可公开内容，客户专属页面通过直达链接访问。
+      </p>
+    </section>
+
+    <section class="shell section">
+      <p class="eyebrow">Courses</p>
+      <div class="grid-cards" style="margin-top: 22px;">
+        {courses.map((course) => (
+          <article class="card">
+            <div>
+              <span class="status active">course</span>
+              <h2>{course.title}</h2>
+              <p>{course.description}</p>
+              <p>对象：{course.audience}</p>
+            </div>
+            <div class="button-row">
+              <a class="button" href={`/c/${course.slug}/`}>进入课程</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="shell section">
+      <p class="eyebrow">Public Projects</p>
+      <div class="grid-cards" style="margin-top: 22px;">
+        {projects.map((project) => (
+          <article class="card">
+            <div>
+              <span class="status">{project.type}</span>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+            </div>
+            <div class="button-row">
+              <a class="button secondary" href={project.path}>打开</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
