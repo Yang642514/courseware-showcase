@@ -1,19 +1,31 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { getCourse } from '../../../content/courses';
+import { courses } from '../../../content/courses';
+import { siteConfig } from '../../../content/site';
+import type { Course, CourseLesson } from '../../../content/courses';
 
-const course = getCourse('enterprise-ai-training');
-const lesson = course?.lessons.find((item) => item.slug === 'lesson-1');
-
-if (!course || !lesson || !lesson.deckPath) {
-  throw new Error('lesson-1 deck config is missing');
+export function getStaticPaths() {
+  const paths: { params: { slug: string; lesson: string }; props: { course: Course; lesson: CourseLesson } }[] = [];
+  for (const course of courses) {
+    for (const lesson of course.lessons) {
+      if (lesson.status === 'ready' && lesson.deckPath) {
+        paths.push({
+          params: { slug: course.slug, lesson: lesson.slug },
+          props: { course, lesson },
+        });
+      }
+    }
+  }
+  return paths;
 }
+
+const { course, lesson } = Astro.props;
 ---
 
-<Layout title={`${lesson.title} - ${course.title}`}>
+<Layout title={`${lesson.title} - ${course.title}`} description={`${lesson.summary} · ${siteConfig.name}`}>
   <main class="page-shell">
     <section class="section" style="padding-top: 0;">
-      <p class="eyebrow">Lesson 1</p>
+      <p class="eyebrow">Lesson</p>
       <h1 class="page-title">{lesson.title}</h1>
       <p class="lead">{lesson.summary}</p>
     </section>
@@ -38,8 +50,8 @@ if (!course || !lesson || !lesson.deckPath) {
 
     <section class="section">
       <div class="button-row" style="margin-top: 0;">
-        {lesson.homeworkPath && (
-          <a class="button-primary" href={lesson.homeworkPath}>查看课后作业</a>
+        {lesson.homework && (
+          <a class="button-primary" href={`/c/${course.slug}/${lesson.slug}/homework/`}>查看课后作业</a>
         )}
         <a class="button-secondary" href={`/c/${course.slug}/`}>返回课程主页</a>
       </div>
@@ -51,13 +63,11 @@ if (!course || !lesson || !lesson.deckPath) {
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
     const indicator = document.getElementById('slide-indicator');
-    let ready = false;
 
     function syncState() {
       try {
         const win = frame.contentWindow;
         if (!win || typeof win.go !== 'function') return;
-        ready = true;
         const idx = win.__currentSlideIndex || 0;
         const total = win.total || win.document.querySelectorAll('.slide').length || 0;
         indicator.textContent = total ? `第 ${idx + 1} / ${total} 页` : `第 ${idx + 1} 页`;

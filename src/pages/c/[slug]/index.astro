@@ -1,15 +1,19 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { getCourse } from '../../../content/courses';
+import { courses } from '../../../content/courses';
+import { siteConfig } from '../../../content/site';
 
-const course = getCourse('enterprise-ai-training');
-
-if (!course) {
-  throw new Error('enterprise-ai-training course config is missing');
+export function getStaticPaths() {
+  return courses.map((course) => ({
+    params: { slug: course.slug },
+    props: { course },
+  }));
 }
+
+const { course } = Astro.props;
 ---
 
-<Layout title={`${course.title} - 晴天展示工作台`}>
+<Layout title={`${course.title} - ${siteConfig.name}`}>
   <main class="page-shell">
     <section class="section">
       <p class="eyebrow">Enterprise AI Training</p>
@@ -32,8 +36,8 @@ if (!course) {
               {lesson.status === 'ready' && lesson.deckPath && (
                 <a class="button-primary" href={`/c/${course.slug}/${lesson.slug}/`}>查看课件</a>
               )}
-              {lesson.status === 'ready' && lesson.homeworkPath && (
-                <a class="button-secondary" href={lesson.homeworkPath}>查看作业</a>
+              {lesson.status === 'ready' && lesson.homework && (
+                <a class="button-secondary" href={`/c/${course.slug}/${lesson.slug}/homework/`}>查看作业</a>
               )}
               {lesson.status !== 'ready' && (
                 <span style="color: var(--muted); opacity: 0.6;">待发布</span>

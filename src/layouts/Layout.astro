@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { getPublicCourses } from '../content/courses';
+import { siteConfig } from '../content/site';
 
 interface Props {
   title: string;
@@ -8,8 +10,10 @@ interface Props {
 
 const {
   title,
-  description = '晴天 · 课程与展示中心，培训课件、学习资料和项目演示。',
+  description = siteConfig.description,
 } = Astro.props;
+
+const navCourses = getPublicCourses();
 ---
 
 <!doctype html>
@@ -22,16 +26,18 @@ const {
   </head>
   <body>
     <header class="shell" style="padding: 28px 0; display:flex; justify-content:space-between; align-items:center;">
-      <a href="/" style="font-weight:700;">晴天 · 课程与展示中心</a>
+      <a href="/" style="font-weight:700;">{siteConfig.name}</a>
       <nav style="display:flex; gap:18px; color:var(--muted); font-size:14px;">
         <a href="/">首页</a>
-        <a href="/c/enterprise-ai-training/">企业 AI 培训</a>
+        {navCourses.map((c) => (
+          <a href={`/c/${c.slug}/`}>{c.title}</a>
+        ))}
       </nav>
     </header>
     <slot />
     <footer class="shell" style="padding: 44px 0; color:var(--muted); border-top:1px solid var(--line);">
-      <p>晴天 · 课程与展示中心</p>
-      <p>培训课件、学习资料和项目演示。</p>
+      <p>{siteConfig.name}</p>
+      <p>{siteConfig.footer}</p>
     </footer>
   </body>
 </html>
