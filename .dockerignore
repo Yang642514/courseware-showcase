@@ -1,6 +1,5 @@
 node_modules/
 .astro/
-dist/
 .git/
 .github/
 .playwright-mcp/
