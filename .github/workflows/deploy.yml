@@ -56,8 +56,10 @@ jobs:
       - name: Validate deployment configuration
         env:
           SEALOS_DEPLOYMENT_NAME: ${{ vars.SEALOS_DEPLOYMENT_NAME || 'courseware-showcase' }}
+          SEALOS_NAMESPACE: ${{ vars.SEALOS_NAMESPACE }}
         run: |
           test -n "$SEALOS_DEPLOYMENT_NAME" || (echo "Missing repository variable: SEALOS_DEPLOYMENT_NAME" && exit 1)
+          test -n "$SEALOS_NAMESPACE" || (echo "Missing repository variable: SEALOS_NAMESPACE" && exit 1)
 
       - uses: azure/setup-kubectl@v4
 
@@ -73,9 +75,11 @@ jobs:
       - name: Restart Sealos deployment
         env:
           SEALOS_DEPLOYMENT_NAME: ${{ vars.SEALOS_DEPLOYMENT_NAME || 'courseware-showcase' }}
-        run: kubectl rollout restart "deployment/$SEALOS_DEPLOYMENT_NAME"
+          SEALOS_NAMESPACE: ${{ vars.SEALOS_NAMESPACE }}
+        run: kubectl rollout restart "deployment/$SEALOS_DEPLOYMENT_NAME" --namespace "$SEALOS_NAMESPACE"
 
       - name: Wait for rollout
         env:
           SEALOS_DEPLOYMENT_NAME: ${{ vars.SEALOS_DEPLOYMENT_NAME || 'courseware-showcase' }}
-        run: kubectl rollout status "deployment/$SEALOS_DEPLOYMENT_NAME" --timeout=180s
+          SEALOS_NAMESPACE: ${{ vars.SEALOS_NAMESPACE }}
+        run: kubectl rollout status "deployment/$SEALOS_DEPLOYMENT_NAME" --namespace "$SEALOS_NAMESPACE" --timeout=180s

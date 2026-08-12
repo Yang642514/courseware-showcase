@@ -113,6 +113,7 @@ docker run --rm -p 8080:80 your-dockerhub-user/showcase-template:latest
 |---|---|---|
 | `DOCKER_IMAGE` | `your-dockerhub-user/showcase-template:latest` | 完整 Docker 镜像地址；配置后优先使用 |
 | `SEALOS_DEPLOYMENT_NAME` | `showcase-template` | Sealos 中已有的 Deployment 名称；不配置时兼容旧名称 `courseware-showcase` |
+| `SEALOS_NAMESPACE` | `ns-your-namespace` | Sealos 中 Deployment 所在的 Kubernetes namespace |
 
 如果暂时不设置 `DOCKER_IMAGE`，工作流会兼容使用 `DOCKER_USERNAME/courseware-showcase:latest`。复制模板后建议尽快设置自己的镜像地址。
 

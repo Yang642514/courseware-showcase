@@ -30,9 +30,10 @@ GitHub push
 ```text
 DOCKER_IMAGE=your-dockerhub-user/showcase-template:latest
 SEALOS_DEPLOYMENT_NAME=showcase-template
+SEALOS_NAMESPACE=ns-your-namespace
 ```
 
-`DOCKER_IMAGE` 是完整镜像地址；`SEALOS_DEPLOYMENT_NAME` 是 Sealos 中已有的 Deployment 名称。两者都不是 Secret，可以作为普通 Actions Variable 保存。
+`DOCKER_IMAGE` 是完整镜像地址；`SEALOS_DEPLOYMENT_NAME` 是 Sealos 中已有的 Deployment 名称；`SEALOS_NAMESPACE` 是该 Deployment 所在的 Kubernetes namespace。这些值都不是 Secret，可以作为普通 Actions Variable 保存。
 
 ## GitHub Actions Secrets
 
