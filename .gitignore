@@ -8,4 +8,5 @@ kubeconfig.yaml
 .DS_Store
 .playwright-mcp/
 .superpowers/
+docs/superpowers/
 *.png

@@ -1,14 +1,17 @@
-name: Build and Deploy to Sealos
+name: Build image and deploy to Sealos
 
 on:
   push:
     branches:
       - master
+      - main
   workflow_dispatch:
 
 jobs:
   build-image:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: ${{ vars.DOCKER_IMAGE || format('{0}/courseware-showcase:latest', secrets.DOCKER_USERNAME) }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,6 +25,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Validate image configuration
+        run: |
+          test -n "$DOCKER_IMAGE" || (echo "Missing repository variable: DOCKER_IMAGE" && exit 1)
 
       - name: Build site
         run: npm run build
@@ -40,14 +47,35 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/courseware-showcase:latest
+          tags: ${{ env.DOCKER_IMAGE }}
 
   deploy:
     needs: build-image
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-hub/kubectl@master
+      - name: Validate deployment configuration
         env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-        with:
-          args: rollout restart deployment courseware-showcase
+          SEALOS_DEPLOYMENT_NAME: ${{ vars.SEALOS_DEPLOYMENT_NAME || 'courseware-showcase' }}
+        run: |
+          test -n "$SEALOS_DEPLOYMENT_NAME" || (echo "Missing repository variable: SEALOS_DEPLOYMENT_NAME" && exit 1)
+
+      - uses: azure/setup-kubectl@v4
+
+      - name: Configure kubeconfig
+        env:
+          KUBE_CONFIG_B64: ${{ secrets.KUBE_CONFIG }}
+        run: |
+          test -n "$KUBE_CONFIG_B64" || (echo "Missing repository secret: KUBE_CONFIG" && exit 1)
+          printf '%s' "$KUBE_CONFIG_B64" | base64 --decode > "$RUNNER_TEMP/kubeconfig"
+          chmod 600 "$RUNNER_TEMP/kubeconfig"
+          echo "KUBECONFIG=$RUNNER_TEMP/kubeconfig" >> "$GITHUB_ENV"
+
+      - name: Restart Sealos deployment
+        env:
+          SEALOS_DEPLOYMENT_NAME: ${{ vars.SEALOS_DEPLOYMENT_NAME || 'courseware-showcase' }}
+        run: kubectl rollout restart "deployment/$SEALOS_DEPLOYMENT_NAME"
+
+      - name: Wait for rollout
+        env:
+          SEALOS_DEPLOYMENT_NAME: ${{ vars.SEALOS_DEPLOYMENT_NAME || 'courseware-showcase' }}
+        run: kubectl rollout status "deployment/$SEALOS_DEPLOYMENT_NAME" --timeout=180s

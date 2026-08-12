@@ -2,18 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import { getPublicCourses } from '../content/courses';
 import { getPublicProjects } from '../content/projects';
+import { siteConfig } from '../content/site';
 
 const courses = getPublicCourses();
 const projects = getPublicProjects();
 ---
 
-<Layout title="晴天展示工作台">
+<Layout title={siteConfig.name}>
   <main>
     <section class="shell section" style="padding-top: 88px;">
-      <p class="eyebrow">Learning Center</p>
-      <h1 class="page-title">晴天 · 课程与展示中心</h1>
+      <p class="eyebrow">{siteConfig.eyebrow}</p>
+      <h1 class="page-title">{siteConfig.name}</h1>
       <p class="lead">
-        培训课件、学习资料和项目演示，一站式访问。
+        {siteConfig.tagline}
       </p>
     </section>
 

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { courses } from '../../../content/courses';
+import { siteConfig } from '../../../content/site';
 import type { Course, CourseLesson } from '../../../content/courses';
 
 export function getStaticPaths() {
@@ -21,7 +22,7 @@ export function getStaticPaths() {
 const { course, lesson } = Astro.props;
 ---
 
-<Layout title={`${lesson.title} - ${course.title}`}>
+<Layout title={`${lesson.title} - ${course.title}`} description={`${lesson.summary} · ${siteConfig.name}`}>
   <main class="page-shell">
     <section class="section" style="padding-top: 0;">
       <p class="eyebrow">Lesson</p>

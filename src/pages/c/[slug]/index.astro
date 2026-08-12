@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { courses } from '../../../content/courses';
+import { siteConfig } from '../../../content/site';
 
 export function getStaticPaths() {
   return courses.map((course) => ({
@@ -12,7 +13,7 @@ export function getStaticPaths() {
 const { course } = Astro.props;
 ---
 
-<Layout title={`${course.title} - 晴天展示工作台`}>
+<Layout title={`${course.title} - ${siteConfig.name}`}>
   <main class="page-shell">
     <section class="section">
       <p class="eyebrow">Enterprise AI Training</p>
